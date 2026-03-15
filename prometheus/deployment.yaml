@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-myobs-prometheus
+  namespace: ns-myobs
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: app-myobs-prometheus
+
+  template:
+    metadata:
+      labels:
+        app: app-myobs-prometheus
+
+    spec:
+      containers:
+        - name: container-myobs-prometheus
+          image: prom/prometheus
+
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus"
+
+          ports:
+            - containerPort: 9090
+
+          volumeMounts:
+            - name: vm-myobs-prometheus-config
+              mountPath: /etc/prometheus
+
+            - name: vm-myobs-prometheus-storage
+              mountPath: /prometheus
+
+      volumes:
+        - name: vm-myobs-prometheus-config
+          configMap:
+            name: configmap-myobs-prometheus
+
+        - name: vm-myobs-prometheus-storage
+          persistentVolumeClaim:
+            claimName: pvc-myobs-prometheus
