@@ -8,9 +8,9 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/raviagg/mygrafana
+    repoURL: https://github.com/raviagg/myobs
     targetRevision: main
-    path: .
+    path: grafana
 
   destination:
     server: https://kubernetes.default.svc

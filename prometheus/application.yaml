@@ -8,9 +8,9 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/raviagg/myprometheus
+    repoURL: https://github.com/raviagg/myobs
     targetRevision: main
-    path: .
+    path: prometheus
 
   destination:
     server: https://kubernetes.default.svc

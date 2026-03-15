@@ -2,7 +2,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: svc-myobs-grafana
-  namespace: ns-myobs
 
 spec:
   type: NodePort

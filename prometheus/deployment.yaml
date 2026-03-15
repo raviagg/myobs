@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deploy-myobs-prometheus
-  namespace: ns-myobs
 
 spec:
   replicas: 1
